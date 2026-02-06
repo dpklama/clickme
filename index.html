@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I dare you 💝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 192, 203, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 160, 180, 0.2) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 135, 0.3);
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid rgba(255, 182, 193, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ff1493;
+            margin-bottom: 20px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .heart {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .question {
+            font-size: 1.5em;
+            color: #333;
+            margin: 30px 0;
+            font-weight: 500;
+        }
+
+        .quirky-message {
+            font-size: 1.2em;
+            color: #c94b7c;
+            margin: 20px 0;
+            font-weight: 600;
+            min-height: 35px;
+            animation: fadeIn 0.4s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .button-container {
+            position: relative;
+            margin-top: 40px;
+            min-height: 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #yesBtn {
+            transition: all 0.3s ease;
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c94b7c 100%);
+            color: white;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #fda085 0%, #f6d365 100%);
+            color: white;
+        }
+
+        #noBtn.moving {
+            position: absolute;
+            transition: none !important;
+        }
+
+        .celebration {
+            display: none;
+            animation: celebrationEntry 0.8s ease-in;
+        }
+
+        @keyframes celebrationEntry {
+            0% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        .celebration h2 {
+            font-size: 3em;
+            color: #ff1493;
+            margin-bottom: 20px;
+            animation: bounce 0.8s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-30px); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(-15px); }
+        }
+
+        .celebration p {
+            font-size: 1.3em;
+            color: #555;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .meme-container {
+            margin: 30px 0;
+            animation: slideIn 0.6s ease-out 0.3s both;
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .meme-container img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f093fb;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .firework {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: firework 1s ease-out forwards;
+        }
+
+        @keyframes firework {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="question-screen">
+            <h1>Hey Shamoli! 💕</h1>
+            <div class="heart">💝</div>
+            <p class="question">Will you be my Valentine?</p>
+            <div class="quirky-message" id="quirkyMessage"></div>
+            
+            <div class="button-container">
+                <button id="yesBtn" onclick="celebrate()">Yes! 💖</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+
+        <div id="celebration-screen" class="celebration">
+            <h2>YAAAAY! 🎉💕✨</h2>
+            <div class="heart">💑</div>
+            <p style="font-size: 1.5em; font-weight: 600; color: #ff1493;">I knew you'd say yes!</p>
+            <p>This is going to be the best Valentine's Day ever! 💝</p>
+            
+            <div class="meme-container">
+                <img src="https://i.imgflip.com/4/30b1gx.jpg" alt="Success meme" />
+                <p style="margin-top: 15px; font-style: italic; color: #888;">Me right now 😄</p>
+            </div>
+            
+            <p style="margin-top: 30px; font-size: 1.4em; color: #c94b7c;">Can't wait to celebrate with you! 🌹</p>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const container = document.querySelector('.button-container');
+        const quirkyMessage = document.getElementById('quirkyMessage');
+        
+        const messages = [
+            "Wait, are you sure about that? 🤔",
+            "But I already bought the chocolates! 🍫",
+            "Think about all the fun we'll have! 🎉",
+            "Come on, you know you want to say yes! 😏",
+            "Your heart says yes, I can feel it! 💓",
+            "I promise to make it amazing! ✨",
+            "Even my dog thinks you should say yes! 🐶",
+            "The stars aligned for this moment! ⭐",
+            "Don't let the button scare you! 😅",
+            "Just one little click on YES! 👆",
+            "I'll throw in unlimited hugs! 🤗",
+            "99.9% of people would say yes! 📊",
+            "This is your sign to click YES! 🪧",
+            "My heart can't take much more! 💔",
+            "Pretty please with a cherry on top? 🍒"
+        ];
+        
+        let messageIndex = 0;
+        
+        function showQuirkyMessage() {
+            quirkyMessage.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+        }
+        
+        function moveButton(mouseX, mouseY) {
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+            
+            // Make button absolutely positioned when it first moves
+            if (!noBtn.classList.contains('moving')) {
+                noBtn.classList.add('moving');
+            }
+            
+            // Show quirky message
+            showQuirkyMessage();
+            
+            // Calculate positions on the FAR RIGHT side only (opposite from Yes button)
+            const padding = 15;
+            const maxX = containerRect.width - btnRect.width - padding * 2;
+            const maxY = containerRect.height - btnRect.height - padding * 2;
+            
+            // Convert mouse position to container-relative coordinates
+            const mouseXRelative = mouseX - containerRect.left;
+            const mouseYRelative = mouseY - containerRect.top;
+            
+            // Only use RIGHT SIDE positions - far from Yes button which is on the left
+            const allPositions = [
+                // Far right edge (furthest from Yes)
+                { x: maxX, y: padding }, // Top right corner
+                { x: maxX, y: maxY * 0.25 }, // Upper right
+                { x: maxX, y: maxY * 0.5 }, // Middle right edge
+                { x: maxX, y: maxY * 0.75 }, // Lower right
+                { x: maxX, y: maxY }, // Bottom right corner
+                
+                // Right-center positions (still far from Yes)
+                { x: maxX * 0.8, y: padding }, // Top right-center
+                { x: maxX * 0.8, y: maxY * 0.3 }, 
+                { x: maxX * 0.8, y: maxY * 0.5 }, // Middle right-center
+                { x: maxX * 0.8, y: maxY * 0.7 },
+                { x: maxX * 0.8, y: maxY }, // Bottom right-center
+                
+                // More right positions
+                { x: maxX * 0.9, y: maxY * 0.2 },
+                { x: maxX * 0.9, y: maxY * 0.4 },
+                { x: maxX * 0.9, y: maxY * 0.6 },
+                { x: maxX * 0.9, y: maxY * 0.8 },
+            ];
+            
+            // Find the position that is FURTHEST from the mouse cursor
+            let bestPosition = allPositions[0];
+            let maxDistance = 0;
+            
+            for (let pos of allPositions) {
+                // Calculate center of button at this position
+                const btnCenterX = pos.x + btnRect.width / 2;
+                const btnCenterY = pos.y + btnRect.height / 2;
+                
+                // Calculate distance from mouse to this position
+                const dx = btnCenterX - mouseXRelative;
+                const dy = btnCenterY - mouseYRelative;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                // Keep track of the furthest position
+                if (distance > maxDistance) {
+                    maxDistance = distance;
+                    bestPosition = pos;
+                }
+            }
+            
+            noBtn.style.left = bestPosition.x + 'px';
+            noBtn.style.top = bestPosition.y + 'px';
+        }
+        
+        // Track last mouse position
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+        
+        document.addEventListener('mousemove', function(e) {
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+        });
+        
+        // Move button on mousedown for instant response (before click completes)
+        noBtn.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            moveButton(e.clientX, e.clientY);
+        });
+
+        // Also on click as backup
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+        });
+
+        // Also move on touch for mobile
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            moveButton(touch.clientX, touch.clientY);
+        });
+
+        function celebrate() {
+            document.getElementById('question-screen').style.display = 'none';
+            document.getElementById('celebration-screen').style.display = 'block';
+            
+            // Create confetti
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => createConfetti(), i * 20);
+            }
+            
+            // Create fireworks
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => createFirework(), i * 100);
+            }
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.background = ['#ffb6c1', '#ffc0cb', '#ff69b4', '#ff1493', '#ffd700', '#ffe4e1'][Math.floor(Math.random() * 6)];
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            confetti.style.width = (Math.random() * 10 + 5) + 'px';
+            confetti.style.height = confetti.style.width;
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 3000);
+        }
+
+        function createFirework() {
+            const colors = ['#ff69b4', '#ff1493', '#ffb6c1', '#ffc0cb', '#ffd700'];
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight * 0.5;
+            
+            for (let i = 0; i < 12; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (i / 12) * Math.PI * 2;
+                const velocity = 50 + Math.random() * 50;
+                firework.style.setProperty('--x', Math.cos(angle) * velocity + 'px');
+                firework.style.setProperty('--y', Math.sin(angle) * velocity + 'px');
+                
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 1000);
+            }
+        }
+    </script>
+</body>
+</html>
